@@ -31,4 +31,9 @@
 *.out
 *.app
 
-#
+# IDE Settings
+.idea/
+
+# Build
+build/
+
