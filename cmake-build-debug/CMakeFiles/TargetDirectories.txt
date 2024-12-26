@@ -1,0 +1,3 @@
+/Users/leorium/Dev/Noxura/cmake-build-debug/CMakeFiles/Noxura.dir
+/Users/leorium/Dev/Noxura/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/leorium/Dev/Noxura/cmake-build-debug/CMakeFiles/rebuild_cache.dir
