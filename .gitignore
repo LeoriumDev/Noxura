@@ -3,3 +3,9 @@
 
 # Build
 build
+
+# Desktop Services Store
+*.DS_Store
+
+# References
+reference
