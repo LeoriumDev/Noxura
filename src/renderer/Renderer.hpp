@@ -10,6 +10,9 @@ class Renderer {
     void buildBuffers();
     void draw(const MTK::View* view) const;
 
+  protected:
+    int numVertices = 4;
+
   private:
     MTL::Device* device;
     MTL::CommandQueue* commandQueue;

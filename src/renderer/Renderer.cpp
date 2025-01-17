@@ -30,7 +30,6 @@ void Renderer::buildShaders() {
     file.read(shaderSrc, fileSize);
     shaderSrc[fileSize] = '\0';
 
-
     NS::Error* error = nullptr;
     MTL::Library* library = device->newLibrary(NS::String::string(shaderSrc, UTF8StringEncoding), nullptr, &error);
     if (!library) {
@@ -60,22 +59,21 @@ void Renderer::buildShaders() {
 }
 
 void Renderer::buildBuffers() {
-    constexpr size_t NumVertices = 3;
 
-    const simd::float3 positions[NumVertices] = {
+    const simd::float3 positions[] = {
         { -0.5f,  0.5f, 0.0f },
         {  0.5f, 0.5f, 0.0f },
         { 0.0f,  0.0f, 0.0f }
     };
 
-    const simd::float3 colors[NumVertices] = {
+    const simd::float3 colors[] = {
         {  1.0, 0.3f, 0.2f },
         {  0.8f, 1.0, 0.0f },
         {  0.8f, 0.0f, 1.0 }
     };
 
-    constexpr size_t positionsDataSize = NumVertices * sizeof(simd::float3);
-    constexpr size_t colorDataSize = NumVertices * sizeof(simd::float3);
+    const size_t positionsDataSize = numVertices * sizeof(simd::float3);
+    const size_t colorDataSize = numVertices * sizeof(simd::float3);
 
     MTL::Buffer* vertexPositionsBuffer = device->newBuffer(positionsDataSize, MTL::ResourceStorageModeManaged);
     MTL::Buffer* vertexColorsBuffer = device->newBuffer(colorDataSize, MTL::ResourceStorageModeManaged);
@@ -100,7 +98,7 @@ void Renderer::draw(const MTK::View* view) const {
     commandEncoder->setRenderPipelineState( renderPipelineState );
     commandEncoder->setVertexBuffer( this->vertexPositionsBuffer, 0, 0 );
     commandEncoder->setVertexBuffer( this->vertexColorsBuffer, 0, 1 );
-    commandEncoder->drawPrimitives( MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3) );
+    commandEncoder->drawPrimitives( MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(numVertices) );
 
     commandEncoder->endEncoding();
     commandBuffer->presentDrawable(view->currentDrawable());

@@ -59,10 +59,10 @@ void AppDelegate::applicationWillFinishLaunching(NS::Notification* notification)
     app->setActivationPolicy(NS::ActivationPolicy::ActivationPolicyRegular);
 }
 
-void AppDelegate::applicationDidFinishLaunching(NS::Notification* notification)
-{
-    constexpr CGRect frame = {{100.0, 100.0}, {512.0, 512.0}};
-
+void AppDelegate::applicationDidFinishLaunching(NS::Notification* notification) {
+    
+    constexpr CGRect frame = {{100, 100},{600, 600}};
+    
     window = NS::Window::alloc()->init(
         frame,
         NS::WindowStyleMaskClosable|NS::WindowStyleMaskTitled,
